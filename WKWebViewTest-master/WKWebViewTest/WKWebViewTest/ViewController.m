@@ -44,14 +44,14 @@
     [self addSubViews];
     [self refreshBottomButtonState];
     
-    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://m-test.lequyou.com.cn/main/index?channel=5"]]];
+    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.qq.com"]]];
     
 }
 - (void)simpleExampleTest {
     // 1.创建webview，并设置大小，"20"为状态栏高度
     WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     // 2.创建请求
-    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://m-test.lequyou.com.cn/main/index?channel=5"]];
+    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://www.qq.com"]];
     // 3.加载网页
     [webView loadRequest:request];
     
