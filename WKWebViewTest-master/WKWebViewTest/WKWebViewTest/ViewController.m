@@ -2,9 +2,6 @@
 //  ViewController.m
 //  WKWebViewTest
 //
-//  Created by mdd on 16/3/10.
-//  Copyright © 2016年 com.personal. All rights reserved.
-//
 
 /// 控件高度
 #define kSearchBarH  0
@@ -78,80 +75,11 @@
 }
 
 - (void)addBottomViewButtons {
-    /**
-    // 记录按钮个数
-    int count = 0;
-    // 添加按钮
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"后退" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor colorWithRed:249 / 255.0 green:102 / 255.0 blue:129 / 255.0 alpha:1.0] forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-    [button.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    button.tag = ++count;    // 标记按钮
-    [button addTarget:self action:@selector(onBottomButtonsClicled:) forControlEvents:UIControlEventTouchUpInside];
-    [self.bottomView addSubview:button];
-    self.backBtn = button;
-    
-    button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"前进" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor colorWithRed:249 / 255.0 green:102 / 255.0 blue:129 / 255.0 alpha:1.0] forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-    [button.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    button.tag = ++count;
-    [button addTarget:self action:@selector(onBottomButtonsClicled:) forControlEvents:UIControlEventTouchUpInside];
-    [self.bottomView addSubview:button];
-    self.forwardBtn = button;
-    // 刷新按钮
-    button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"重新加载" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor colorWithRed:249 / 255.0 green:102 / 255.0 blue:129 / 255.0 alpha:1.0] forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-    [button.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    button.tag = ++count;
-    [button addTarget:self action:@selector(onBottomButtonsClicled:) forControlEvents:UIControlEventTouchUpInside];
-    [self.bottomView addSubview:button];
-    self.reloadBtn = button;
-    
-    button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"Safari" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor colorWithRed:249 / 255.0 green:102 / 255.0 blue:129 / 255.0 alpha:1.0] forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
-    [button.titleLabel setFont:[UIFont systemFontOfSize:15]];
-    button.tag = ++count;
-    [button addTarget:self action:@selector(onBottomButtonsClicled:) forControlEvents:UIControlEventTouchUpInside];
-    [self.bottomView addSubview:button];
-    self.browserBtn = button;
-    // 统一设置frame
-    [self setupBottomViewLayout];
-     */
+   
 }
 - (void)setupBottomViewLayout
 {
-    /**
-    int count = 4;
-    CGFloat btnW = 80;
-    CGFloat btnH = 30;
-    
-    CGFloat btnY = (self.bottomView.bounds.size.height - btnH) / 2;
-    // 按钮间间隙
-    CGFloat margin = (self.bottomView.bounds.size.width - btnW * count) / count;
-    
-    CGFloat btnX = margin * 0.5;
-    self.backBtn.frame = CGRectMake(btnX, btnY, btnW, btnH);
-    
-    btnX = self.backBtn.frame.origin.x + btnW + margin;
-    self.forwardBtn.frame = CGRectMake(btnX, btnY, btnW, btnH);
-    
-    btnX = self.forwardBtn.frame.origin.x + btnW + margin;
-    self.reloadBtn.frame = CGRectMake(btnX, btnY, btnW, btnH);
-    
-    btnX = self.reloadBtn.frame.origin.x + btnW + margin;
-    self.browserBtn.frame = CGRectMake(btnX, btnY, btnW, btnH);
-     */
+   
 }
 /// 刷新按钮是否允许点击
 - (void)refreshBottomButtonState {
@@ -196,19 +124,7 @@
 #pragma mark - WKWebView WKNavigationDelegate 相关
 /// 是否允许加载网页 在发送请求之前，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    /**
-    NSString *urlString = [[navigationAction.request URL] absoluteString];
-    
-    urlString = [urlString stringByRemovingPercentEncoding];
-    //    NSLog(@"urlString=%@",urlString);
-    // 用://截取字符串
-    NSArray *urlComps = [urlString componentsSeparatedByString:@"://"];
-    if ([urlComps count]) {
-        // 获取协议头
-        NSString *protocolHead = [urlComps objectAtIndex:0];
-        NSLog(@"protocolHead=%@",protocolHead);
-    }
-     */
+   
     NSURL *URL = navigationAction.request.URL;
     NSString *scheme = [URL scheme];
     if ([scheme isEqualToString:@"tel"]) {
@@ -334,19 +250,7 @@
     }
     return _bottomView;
 }
- /**- (UISearchBar *)searchBar {
-   
-    if (_searchBar == nil) {
-        UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, kSearchBarH)];
-        searchBar.delegate = self;
-        searchBar.text = @"http://www.cnblogs.com/mddblog/";
-        _searchBar = searchBar;
-        
-    }
-    return _searchBar;
-  
-}
-*/
+
 - (WKWebView *)wkWebView {
     if (_wkWebView == nil) {
         WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 20 + kSearchBarH, kScreenWidth, kScreenHeight - 20 - kSearchBarH - kBottomViewH)];
